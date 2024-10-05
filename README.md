@@ -1,12 +1,6 @@
 # LSCS Central Auth API
 
-## TODOs
-
-- [ ] add auto redirect to `/web` when testing with frontend 
-
 ## Route Endpoints
-
-### Auth (MAIN)
 
 Everything will be redirected to `/` after successful login
 
@@ -15,8 +9,3 @@ Everything will be redirected to `/` after successful login
 
 `/logout`
 - for logging out
-
-
-### Web (FOR TESTING with frontend)
-
-`/web` -> homepage
