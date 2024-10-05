@@ -17,10 +17,6 @@ const app = express();
 
 app.locals.pluralize = require("pluralize");
 
-// view engine setup
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
-
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -28,22 +24,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(
     session({
+        // TODO: get secret from .env
         secret: "keyboard cat",
         resave: false,
         saveUninitialized: false,
         store: new SQLiteStore({ db: "sessions.db", dir: "./const/db" }),
     }),
 );
-
-app.use(
-    session({
-        secret: "keyboard cat",
-        resave: false,
-        saveUninitialized: false,
-        store: new SQLiteStore({ db: "sessions.db", dir: "./const/db" }),
-    }),
-);
-app.use(passport.authenticate("session"));
 
 app.use("/web", webRouter);
 app.use("/", authRouter);

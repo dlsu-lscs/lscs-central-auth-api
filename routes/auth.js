@@ -6,6 +6,7 @@ const db = require("../db");
 const router = express.Router();
 
 /* NOTES:
+ * - profile json from google looks like this:
  
 profile: {
     id: '<unique>',
@@ -105,10 +106,10 @@ router.post("/logout", function (req, res, next) {
 });
 
 // renders page (web)
-router.get("/login", function (req, res, next) {
-    res.render("login");
-    // passport.authenticate("google");
-});
+//router.get("/login", function (req, res, next) {
+//    res.render("login");
+//    // passport.authenticate("google");
+//});
 
 router.get("/login/google", passport.authenticate("google"));
 
