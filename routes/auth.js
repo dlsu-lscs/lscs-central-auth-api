@@ -117,7 +117,7 @@ router.get(
     "/oauth2/redirect/google",
     passport.authenticate("google", {
         successRedirect: "/",
-        failureRedirect: "/login",
+        failureRedirect: "/login", // WARN: some error page or back to login page
     }),
 );
 
