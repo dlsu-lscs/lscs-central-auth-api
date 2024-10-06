@@ -1,6 +1,6 @@
-const sqlite3 = require('sqlite3');
-const mkdirp = require('mkdirp');
-const crypto = require('crypto');
+import sqlite3 from 'sqlite3'
+import mkdirp from 'mkdirp'
+import crypto from 'crypto'
 
 mkdirp.sync('const/db');
 
@@ -42,4 +42,4 @@ db.serialize(function() {
   ]);
 });
 
-module.exports = db;
+export default db;

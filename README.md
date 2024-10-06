@@ -9,6 +9,7 @@
     - [ ] docs: frontend to verify JWT
 - [ ] build: dockerize for dev and prod builds
 - [ ] chore: update to es6
+- [ ] rewrite/port to Go
 
 ## Route Endpoints
 
@@ -19,3 +20,7 @@ Everything will be redirected to `/` after successful login
 
 `/logout`
 - for logging out
+
+### For testing
+
+`/users`

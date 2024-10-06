@@ -1,9 +1,9 @@
-const express = require("express");
-const passport = require("passport");
-const GoogleStrategy = require("passport-google-oidc");
-const db = require("../db");
+import express from "express";
+import passport from "passport";
+import GoogleStrategy from "passport-google-oidc"
+import db from "../db.js"
 
-const router = express.Router();
+const authRouter = express.Router();
 
 /* NOTES:
  * - profile json from google looks like this:
@@ -24,8 +24,8 @@ profile: {
 passport.use(
     new GoogleStrategy(
         {
-            clientID: process.env["GOOGLE_CLIENT_ID"],
-            clientSecret: process.env["GOOGLE_CLIENT_SECRET"],
+            clientID: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
             callbackURL: "/oauth2/redirect/google",
             scope: ["email", "profile"],
         },
@@ -95,7 +95,7 @@ passport.deserializeUser(function (user, cb) {
     });
 });
 
-router.post("/logout", function (req, res, next) {
+authRouter.post("/logout", function (req, res, next) {
     req.logout(function (err) {
         if (err) {
             return next(err);
@@ -111,9 +111,9 @@ router.post("/logout", function (req, res, next) {
 //    // passport.authenticate("google");
 //});
 
-router.get("/login/google", passport.authenticate("google"));
+authRouter.get("/login/google", passport.authenticate("google"));
 
-router.get(
+authRouter.get(
     "/oauth2/redirect/google",
     passport.authenticate("google", {
         successRedirect: "/",
@@ -121,4 +121,12 @@ router.get(
     }),
 );
 
-module.exports = router;
+
+// renders page (web)
+authRouter.get("/login", function (req, res, next) {
+    res.send("<a href='/login/google'>Login Now</a>");
+});
+
+
+
+export default authRouter;

@@ -1,14 +1,8 @@
 {
-    "name": "todos-express-starter",
+    "name": "lscs-central-auth-api",
     "version": "1.0.0",
-    "private": true,
-    "description": "Starter todo app using Express, Passport, and SQLite for sign in.",
-    "keywords": [
-        "example",
-        "express",
-        "passport",
-        "sqlite"
-    ],
+    "type": "module",
+    "description": "LSCS Central Auth API with Google Login",
     "scripts": {
         "start": "node ./bin/www",
         "dev": "nodemon index.js"
